@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-head-element */
-import '@/styles/globals.css';
+import '@/styles/output.css';
 import Header from '@/components/Header/header';
 
 export default function RootLayout({
@@ -12,6 +12,7 @@ export default function RootLayout({
       <head></head>
       <body>
         <Header />
+        <div className="mt-16" />
         {children}
       </body>
     </html>

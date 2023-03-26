@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build",
+    "dev": "concurrently \"next dev --turbo\" \"tailwindcss --input ./styles/globals.css --output ./styles/output.css --watch\"",
+    "build": "tailwindcss ./styles/globals.css --output ./styles/output.css && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "clsx": "1.2.1",
-    "next": "latest",
+    "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.8.0",
@@ -28,6 +28,7 @@
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.7",
+    "concurrently": "7.6.0",
     "eslint": "8.19.0",
     "eslint-config-next": "latest",
     "postcss": "^8.4.14",

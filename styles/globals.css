@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-slate-200;
+}
+
+@layer utilities {
+  .margin-alignment {
+    @apply sm:mx-24 md:-mx-36 lg:mx-48;
+  }
+
+  .padding-alignment {
+    @apply sm:px-24 md:px-36 lg:px-48;
+  }
+
+  .btn-bg {
+    /* Give intel blue color and hover color */
+    @apply bg-blue-500 text-white hover:bg-blue-700;
+  }
+}
