@@ -1,6 +1,7 @@
 'use client';
 
 import Dropdown from '@/ui/Dropdown';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { FaUser } from 'react-icons/fa';
 
@@ -24,12 +25,6 @@ export default function Header() {
   const [showNavbar, setShowNavbar] = useState(true);
 
   useEffect(() => {
-    console.log('Window is: ', window);
-
-    if (typeof window === 'undefined') {
-      return;
-    }
-
     window.onscroll = function () {
       let currentScrollPos = window.pageYOffset;
       if (prevScrollPos > currentScrollPos) {
@@ -43,15 +38,17 @@ export default function Header() {
 
   return (
     <div
-      className={`fixed top-0 z-10 w-full bg-primary shadow-md ${
+      className={`padding-alignment fixed top-0 z-10 w-full bg-primary shadow-md ${
         showNavbar ? '' : 'top-[-100px]'
       }`}
     >
       <div className="flex items-center justify-between px-4 py-3">
         {/* Company Name */}
-        <div className="text-3xl font-bold uppercase tracking-wide text-white">
-          OTI
-        </div>
+        <Link href={'/'}>
+          <div className="text-3xl font-bold uppercase tracking-wide text-white">
+            OTI
+          </div>
+        </Link>
 
         {/* User Icon and Dropdown Menu */}
         <div className="relative flex items-center">

@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <html>
       <head></head>
-      <body>
+      <body className="flex flex-col">
         <Header />
         <div className="mt-16" />
         {children}
