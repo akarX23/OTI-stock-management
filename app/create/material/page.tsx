@@ -1,13 +1,14 @@
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import { FaCamera } from 'react-icons/fa';
 
-type MaterialProps = {
+interface MaterialProps {
   id?: string;
   name?: string;
   images?: string[];
-};
+}
 
 const Material = ({ id = '', name = '', images = [] }: MaterialProps) => {
   const [material, setMaterial] = useState({ id, name });
@@ -25,7 +26,6 @@ const Material = ({ id = '', name = '', images = [] }: MaterialProps) => {
         URL.createObjectURL(file),
       );
       setNewImages((prevImages) => [...prevImages, ...imagesArray]);
-      //   Array.from(files).map((file) => URL.revokeObjectURL(file));
     }
   };
 
