@@ -16,6 +16,9 @@ const Page = () => {
         <Link href={'/create/material'}>
           <Button title="Create Material" className="mx-4" />
         </Link>
+        <Link href={'/create/jobOrderSheet'}>
+          <Button title="Create Job Order" className="mx-4" />
+        </Link>
       </div>
     </div>
   );

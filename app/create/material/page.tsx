@@ -1,17 +1,12 @@
 'use client';
 
+import { Material } from '@/lib/types';
 import React from 'react';
 import { useState } from 'react';
 import { FaCamera } from 'react-icons/fa';
 
-interface MaterialProps {
-  id?: string;
-  name?: string;
-  images?: string[];
-}
-
-const Material = ({ id = '', name = '', images = [] }: MaterialProps) => {
-  const [material, setMaterial] = useState({ id, name });
+const Material = ({ _id = '', name = '', images = [] }: Material) => {
+  const [material, setMaterial] = useState({ _id, name });
   const [newImages, setNewImages] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

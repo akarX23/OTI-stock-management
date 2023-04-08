@@ -1,21 +1,8 @@
 'use client';
 
+import { DropdownProps } from '@/lib/types';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
-
-interface DropdownItem {
-  label: string;
-  value: any;
-}
-
-interface DropdownProps {
-  items: DropdownItem[];
-  onChange: (value: any) => void;
-  title: string;
-  maxWidth: number | string;
-  initVal?: string;
-  containerStyle?: string;
-}
 
 const Dropdown = ({
   items,
@@ -24,9 +11,13 @@ const Dropdown = ({
   maxWidth,
   initVal,
   containerStyle,
+  dynamicTitle,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currVal, setCurrVal] = useState<string>(initVal || '');
+  const [currLabel, setCurrLabel] = useState(
+    items.find((item) => item.value === initVal)?.label || '',
+  );
 
   const containerRef = useRef<HTMLDivElement>(null);
   const toggle = () => setIsOpen(!isOpen);
@@ -56,7 +47,7 @@ const Dropdown = ({
         className="focus:shadow-outline-gray flex cursor-pointer items-center rounded-md bg-gray-700 p-2 text-sm font-medium text-white focus:border-gray-700 focus:outline-none active:bg-gray-800"
         onClick={toggle}
       >
-        <p>{title}</p>
+        <p>{dynamicTitle ? currLabel : title}</p>
         <FaCaretDown className="ml-1 h-4 w-4" />
       </div>
       <div
@@ -77,7 +68,8 @@ const Dropdown = ({
                 onClick={() => {
                   toggle();
                   setCurrVal(item.value);
-                  onChange(item.value);
+                  setCurrLabel(item.label);
+                  onChange(item.value, item.label);
                 }}
               >
                 {item.label}
